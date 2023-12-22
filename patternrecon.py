@@ -10,13 +10,15 @@ def find_reel(start_look_index = 0, array_look_limit = 3):
             number_list = [int(num) for num in line.strip().split(', ')]
             data.append(number_list)
 
+    data = list(map(list, {tuple(lst): None for lst in data}))
+
     reel = [i for i in data[start_look_index]]
     data.pop(start_look_index)
 
     list_of_data = data
 
 
-    for i in range(100):
+    for i in range(200):
         sublist_part = reel[len(reel) - 4: len(reel)]
         found = False
         array_look_len = 4
@@ -40,13 +42,13 @@ def find_reel(start_look_index = 0, array_look_limit = 3):
 
             if array_look_len < array_look_limit:
                 break
+
     print(len(reel))
     return reel
 for i in range(40):
 
     array = find_reel(i ,3)
-    # print(array)
     print(f"Index: {i} Len: {len(array)}")
 
-
-print(find_reel(0 ,4))
+x = find_reel(0 ,3)
+print(x, len(x))
